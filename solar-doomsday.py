@@ -2,22 +2,17 @@
 #----------------------1.1
 #-----------solar-doomsday
 
-from math import sqrt, floor  
+from math import sqrt
 
-def isPerfect(N):
-    if (sqrt(N) - floor(sqrt(N)) != 0): 
-        return False
-    return True
-
-if __name__=="__main__":
-    n = int(input())
-    t = n
-    ans=""
-    while(t>0 and n>0):
-        if(isPerfect(n)):
-            ans+=(str(n)+" ")
-            t-=n
-            n = t
+def solution(area):
+    tmp = area
+    res = []
+    while area > 0:
+        sq = sqrt(tmp)
+        if sq == int(sq):
+            res.append(tmp)
+            area -= tmp
+            tmp = area
             continue
-        n-=1
-    print(ans)
+        tmp -= 1
+    return res
